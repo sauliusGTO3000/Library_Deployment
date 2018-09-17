@@ -62,5 +62,12 @@ class Author
     {
         return $this->fullName;
     }
+
+    public function __toString()
+    {
+        return $this->fullName;
+    }
+
+
 }
 
