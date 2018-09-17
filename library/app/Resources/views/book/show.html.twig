@@ -14,6 +14,12 @@
                 <td>{{ book.title }}</td>
             </tr>
             <tr>
+                <th>Authors</th>
+                {% for author in book.authors %}
+                    <td> {{ author }} </td>
+                {% endfor %}
+            </tr>
+            <tr>
                 <th>Isbn</th>
                 <td>{{ book.isbn }}</td>
             </tr>

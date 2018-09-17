@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
+                <th>Authors</th>
                 <th>Isbn</th>
                 <th>Price</th>
                 <th>Actions</th>
@@ -18,6 +19,9 @@
             <tr>
                 <td><a href="{{ path('book_show', { 'id': book.id }) }}">{{ book.id }}</a></td>
                 <td>{{ book.title }}</td>
+                {% for author in book.authors %}
+                    <td> {{ author }} </td>
+                {% endfor %}
                 <td>{{ book.isbn }}</td>
                 <td>{{ book.price }}</td>
                 <td>
