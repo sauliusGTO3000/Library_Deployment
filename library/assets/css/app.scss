@@ -1,5 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 
 body{
-  background-color: mediumpurple;
+  background-color: rgb(245,245,245);
+  .container{
+    background-color: rgb(255,255,255);
+  }
 }

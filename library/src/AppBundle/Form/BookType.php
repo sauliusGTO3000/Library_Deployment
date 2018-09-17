@@ -2,9 +2,13 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Repository\AuthorRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Author;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,9 +22,17 @@ class BookType extends AbstractType
         $builder
             ->add('title')
             ->add('isbn')
-            ->add('price')
+            ->add('price',MoneyType::class, array(
+                'divisor' => 100,
+            ))
             ->add('category')
-            ->add('authors');
+            ->add('authors', EntityType::class, array(
+                'class' => \AppBundle\Entity\Author::class,
+
+                'multiple' => true,
+
+                'choice_label' => 'fullName',
+            ));
     }/**
      * {@inheritdoc}
      */
