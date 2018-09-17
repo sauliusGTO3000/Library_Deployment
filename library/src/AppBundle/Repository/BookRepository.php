@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Book;
 
 /**
  * BookRepository
@@ -10,4 +11,43 @@ namespace AppBundle\Repository;
  */
 class BookRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param string|null $term
+     * @return Book[]
+     */
+    public function findAllWithSearch(?string $term)
+
+    {
+        $qb = $this->createQueryBuilder('c');
+        if ($term) {
+            $qb->andWhere('c.isbn LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }
+        return $qb
+            ->orderBy('c.title', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param string|null $term
+     * @return Book[]
+     */
+    public function findAllWithAuthorId(?string $term)
+
+    {
+        $qb = $this->createQueryBuilder('c');
+        if ($term) {
+            $qb->andWhere('c.authors LIKE :1')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }
+        return $qb
+            ->orderBy('c.title', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

@@ -19,10 +19,25 @@ class BookController extends Controller
      *
      * @Route("/", name="book_index")
      * @Method("GET")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $q = $request->query->get('q');
+        $searchBy = $request->query->get('searchBy');
+
+        if ($q){
+            if ($searchBy == 'ISBN'){
+                $books = $em->getRepository('AppBundle:Book')->findAllWithSearch($q);
+                return $this->render('book/index.html.twig', array(
+                    'books' => $books,
+                ));
+            }else{
+                echo "not searching";
+            }
+        }
 
         $books = $em->getRepository('AppBundle:Book')->findAll();
 
