@@ -30,6 +30,13 @@ class Author
 
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Book", mappedBy="authors")
+     * @ORM\JoinTable(name="author_book")
+     * */
+    private $books;
+
+
+    /**
      * Get id
      *
      * @return int

@@ -59,9 +59,7 @@ class Book
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Author")
-     * @ORM\JoinTable(name="book_author")
-     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Author", inversedBy="books")
      */
     private $authors;
 

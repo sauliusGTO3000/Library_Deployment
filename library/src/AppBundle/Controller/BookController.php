@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\AppBundle;
 use AppBundle\Entity\Book;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -30,12 +31,17 @@ class BookController extends Controller
 
         if ($q){
             if ($searchBy == 'ISBN'){
-                $books = $em->getRepository('AppBundle:Book')->findAllWithSearch($q);
+                $books = $em->getRepository('AppBundle:Book')->findAllWithIsbn($q);
                 return $this->render('book/index.html.twig', array(
                     'books' => $books,
                 ));
             }else{
-                echo "not searching";
+                $books = $em->getRepository('AppBundle:Book')->findAllWithAuthorName($q);
+
+                return $this->render('book/index.html.twig', array(
+                    'books' => $books,
+                ));
+
             }
         }
 
