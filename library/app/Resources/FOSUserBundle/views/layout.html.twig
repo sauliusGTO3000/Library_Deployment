@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
+{% extends 'base.html.twig' %}
+{% block body %}
     <body>
         <div>
-            <h1>TESTING V2
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}">
@@ -31,4 +27,4 @@
             {% endblock fos_user_content %}
         </div>
     </body>
-</html>
+{% endblock %}
