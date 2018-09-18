@@ -10,8 +10,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body class="">
-
+    <body class="container">
         {% block header %}{{ include('header.html.twig') }}{% endblock %}
         {% block body %}{% endblock %}
     {% block javascripts %}<script src="{{ asset('build/app.js') }}"></script>{% endblock %}

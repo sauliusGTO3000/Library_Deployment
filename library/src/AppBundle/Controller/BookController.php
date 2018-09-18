@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\AppBundle;
 use AppBundle\Entity\Book;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -57,6 +58,7 @@ class BookController extends Controller
      *
      * @Route("/new", name="book_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction(Request $request)
     {
@@ -96,7 +98,7 @@ class BookController extends Controller
 
     /**
      * Displays a form to edit an existing book entity.
-     *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}/edit", name="book_edit")
      * @Method({"GET", "POST"})
      */
@@ -121,7 +123,7 @@ class BookController extends Controller
 
     /**
      * Deletes a book entity.
-     *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="book_delete")
      * @Method("DELETE")
      */
