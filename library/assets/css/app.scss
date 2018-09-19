@@ -33,3 +33,13 @@ body{
   color: rgb(31,170,114);
   text-decoration: none;
 }
+
+.btn.btn-secondary.active{
+  background-color: #1fb372!important;
+}
+.btn.btn-outline-secondary:focus{
+  background-color: #1fb372!important;
+}
+.btn.btn-outline-secondary:hover{
+  background-color: #1fb372!important;
+}

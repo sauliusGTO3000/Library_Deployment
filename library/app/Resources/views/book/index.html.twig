@@ -1,79 +1,68 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
     <div class="container mr-auto">
         <form>
-        <div class="row">
-            <div class="col-12">
-                <div class="col-12 px-2">
-                    <div class="input-group mb-3">
-
-                        <input type="text" name="q" class="form-control" placeholder="Search Books by Author or ISBN...">
-                        <div class="input-group-append">
-                        <div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
-                            <label class="btn btn-secondary active">
-                                <input type="radio" name="searchBy" class="form-control" id="Author" value="Author" checked> Author
-                            </label>
-                            <label class="btn btn-secondary">
-                                <input type="radio" name="searchBy" class="form-control" id="ISBN" value="ISBN"> ISBN
-                            </label>
-                        </div>
-                        </div>
-                        <div class="input-group-append">
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12 px-2">
+                        <div class="input-group mb-3">
+                            <div class="col-xl-9 col-l-9 col-md-12 col-xs-12">
+                                <input type="text" name="q" class="form-control col-xs-12 col-md-12" placeholder="Search Books by Author or ISBN...">
+                            </div>
+                            <div class="input-group-append">
+                                <div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
+                                    <label class="btn btn-secondary active">
+                                        <input type="radio" name="searchBy" class="form-control" id="Author" value="Author" checked> Author
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="searchBy" class="form-control" id="ISBN" value="ISBN"> ISBN
+                                    </label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-outline-secondary">
                                 <span class="fa fa-search"></span>
                             </button>
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </form>
+        <hr class="col-xs-12">
     </div>
-    <hr class="col-xs-12">
+    <div class="container col-11">
+        <div class="row ">
+            <div class="col-4"><b>Title</b></div>
+            <div class="col-3"><b>Authors</b></div>
+            <div class="col-3"><b>ISBN</b></div>
+            <div class="col-1"><b>Price</b></div>
+            <div class="col-1"><b>Action</b></div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Authors</th>
-                <th>Isbn</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for book in books %}
-            <tr>
-                <td><a href="{{ path('book_show', { 'id': book.id }) }}">{{ book.id }}</a></td>
-                <td>{{ book.title }}</td>
+        <div class="row">
+            <div class="col-4">{{ book.title }}</div>
+            <div class="col-3">
                 {% for author in book.authors %}
-                    <td> {{ author }} </td>
+                        {{ author }}
                 {% endfor %}
-                <td>{{ book.isbn }}</td>
-                <td>{{ book.price }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('book_show', { 'id': book.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('book_edit', { 'id': book.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            </div>
+            <div class="col-3">{{ book.isbn }}</div>
+            <div class="col-1">{{ book.price }}</div>
+            <div class="col-1">Action</div>
+        </div>
+            {##}
+            {##}
+                {#<th class="col-4">{{ book.title }}</th>#}
+                {#<th class="col-4">#}
+                    {#{% for author in book.authors %}#}
+                        {#{{ author }} ttetwet twe tw tw twwe tw tw twee tw wt wetwtwtwe twtw tewttw#}
+                    {#{% endfor %}#}
+                {#</th>#}
+                {#<th class="col-2">{{ book.isbn }}</th>#}
+                {#<th class="col-2">{{ book.price }}</th>#}
+                {#<th class="col-2"></th>#}
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('book_new') }}">Create a new book</a>
-        </li>
-    </ul>
     </div>
-{% endblock %}
+
+        {% endblock %}
