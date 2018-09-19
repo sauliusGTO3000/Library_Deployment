@@ -36,6 +36,8 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/book$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/book/new, role: ROLE_USER }
-        - { path: ^/book/$/edit, role: ROLE_USER }
+        - { path: ^/book/delete, role: ROLE_USER }
         - { path: ^/category/, role: ROLE_ADMIN }
-        - { path: ^/author/, role: ROLE_USER }
+        - { path: ^/author$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/author/new, role: ROLE_USER }
+        - { path: ^/author/delete, role: ROLE_USER }

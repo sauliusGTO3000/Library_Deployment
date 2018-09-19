@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Author;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -36,6 +37,7 @@ class AuthorController extends Controller
      *
      * @Route("/new", name="author_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction(Request $request)
     {
@@ -78,6 +80,7 @@ class AuthorController extends Controller
      *
      * @Route("/{id}/edit", name="author_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER')")
      */
     public function editAction(Request $request, Author $author)
     {
@@ -103,6 +106,7 @@ class AuthorController extends Controller
      *
      * @Route("/{id}", name="author_delete")
      * @Method("DELETE")
+     * @Security("has_role('ROLE_USER')")
      */
     public function deleteAction(Request $request, Author $author)
     {

@@ -1,20 +1,50 @@
 {% block header %}
     {% if app.request.get('_route') == 'fos_user_security_login' %}
+        {#keep header empty in case user is in log in page#}
         {% else %}
-            <div class="container" style="background-color: white">
-            <div class="row">
-                <div class="display-1">Library</div>
-            </div>
-            {% if is_granted("ROLE_USER") %}
-                <div class="row">
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                    <a href="{{ path('fos_user_security_logout') }}">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                </div>
+            <div class="container mt-3" style="background-color: white">
+            <div class="row col-12 pt-3 pr-0 pl-0 mr-0 ml-0 ">
+                <nav class="navbar navbar-expand-lg navbar-light bg-transparent col-12">
+                    <a href="{{ path('homepage') }}"><img src="{{ asset('build/styleelements/logo.png') }}"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                {% else %}
-                    <a href="{{ path('fos_user_security_login') }}">Login</a>
-                {% endif %}
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Books <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Authors</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Create New
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Book</a>
+                                    <a class="dropdown-item" href="#">Author</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Login</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+            <hr class="col-xs-12">
+
+
+                {% if is_granted("ROLE_USER") %}
+                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">Login</a>
+                    {% endif %}
     {% endif %}
 {% endblock %}

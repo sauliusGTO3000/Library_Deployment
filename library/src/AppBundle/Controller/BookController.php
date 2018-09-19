@@ -97,10 +97,9 @@ class BookController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing book entity.
-     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}/edit", name="book_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER')")
      */
     public function editAction(Request $request, Book $book)
     {
@@ -122,10 +121,9 @@ class BookController extends Controller
     }
 
     /**
-     * Deletes a book entity.
-     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="book_delete")
      * @Method("DELETE")
+     * @Security("has_role('ROLE_USER')")
      */
     public function deleteAction(Request $request, Book $book)
     {
