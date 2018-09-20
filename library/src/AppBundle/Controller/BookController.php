@@ -37,7 +37,7 @@ class BookController extends Controller
                 $result = $paginator->paginate(
                     $books,
                     $request->query->getInt('page',1),
-                    $request->query->getInt('limir',2)
+                    $request->query->getInt('limit',25)
                 );
 
                 return $this->render('book/index.html.twig', array(
@@ -50,7 +50,7 @@ class BookController extends Controller
                 $result = $paginator->paginate(
                     $books,
                     $request->query->getInt('page',1),
-                    $request->query->getInt('limir',2)
+                    $request->query->getInt('limit',25)
                 );
 
                 return $this->render('book/index.html.twig', array(
@@ -163,12 +163,10 @@ class BookController extends Controller
         return $this->redirectToRoute('book_index');
     }
 
+
     /**
-     * Creates a form to delete a book entity.
-     *
-     * @param Book $book The book entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     * @param Book $book
+     * @return \Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(Book $book)
     {

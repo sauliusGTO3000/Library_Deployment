@@ -33,7 +33,7 @@ class AuthorController extends Controller
                 $result = $paginator->paginate(
                     $authors,
                     $request->query->getInt('page',1),
-                    $request->query->getInt('limir',2)
+                    $request->query->getInt('limit',25)
                 );
 
                 return $this->render('author/index.html.twig', array(
@@ -47,7 +47,7 @@ class AuthorController extends Controller
         $result = $paginator->paginate(
             $authors,
             $request->query->getInt('page',1),
-            $request->query->getInt('limir',2)
+            $request->query->getInt('limit',25)
         );
         return $this->render('author/index.html.twig', array(
             'authors' => $result,
