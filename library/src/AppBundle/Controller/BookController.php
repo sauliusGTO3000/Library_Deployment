@@ -33,24 +33,44 @@ class BookController extends Controller
         if ($q){
             if ($searchBy == 'ISBN'){
                 $books = $em->getRepository('AppBundle:Book')->findAllWithIsbn($q);
-                return $this->render('book/index.html.twig', array(
-                    'books' => $books,
-                ));
-            }else{
-                $books = $em->getRepository('AppBundle:Book')->findAllWithAuthorName($q);
+                $paginator = $this->get('knp_paginator');
+                $result = $paginator->paginate(
+                    $books,
+                    $request->query->getInt('page',1),
+                    $request->query->getInt('limir',2)
+                );
 
                 return $this->render('book/index.html.twig', array(
-                    'books' => $books,
+                    'books' => $result,
+                ));
+
+            }else{
+                $books = $em->getRepository('AppBundle:Book')->findAllWithAuthorName($q);
+                $paginator = $this->get('knp_paginator');
+                $result = $paginator->paginate(
+                    $books,
+                    $request->query->getInt('page',1),
+                    $request->query->getInt('limir',2)
+                );
+
+                return $this->render('book/index.html.twig', array(
+                    'books' => $result,
                 ));
 
             }
         }
-
         $books = $em->getRepository('AppBundle:Book')->findAll();
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $books,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limir',2)
+        );
 
         return $this->render('book/index.html.twig', array(
-            'books' => $books,
+            'books' => $result,
         ));
+
     }
 
     /**
@@ -97,6 +117,7 @@ class BookController extends Controller
     }
 
     /**
+     * Displays a form to edit an existing book entity.
      * @Route("/{id}/edit", name="book_edit")
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_USER')")
@@ -121,9 +142,10 @@ class BookController extends Controller
     }
 
     /**
+     * Deletes a book entity.
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="book_delete")
      * @Method("DELETE")
-     * @Security("has_role('ROLE_USER')")
      */
     public function deleteAction(Request $request, Book $book)
     {

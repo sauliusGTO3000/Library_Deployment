@@ -31,38 +31,35 @@
         <hr class="col-xs-12">
     </div>
     <div class="container col-11">
-        <div class="row ">
-            <div class="col-4"><b>Title</b></div>
-            <div class="col-3"><b>Authors</b></div>
-            <div class="col-3"><b>ISBN</b></div>
-            <div class="col-1"><b>Price</b></div>
-            <div class="col-1"><b>Action</b></div>
+        <div class="row mb-2">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>Title</b></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 d-none d-lg-block d-xl-bloc d-sm-block"><b>Authors</b></div>
+            <div class="col-3 d-none d-lg-block d-xl-block""><b>ISBN</b></div>
+            <div class="col-1 d-none d-lg-block d-xl-block""><b>Price</b></div>
+            <div class="col-1 d-none d-lg-block d-xl-block""><b>Action</b></div>
         </div>
 
         {% for book in books %}
         <div class="row">
-            <div class="col-4">{{ book.title }}</div>
-            <div class="col-3">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="{{ path('book_show', { 'id': book.id }) }}">{{ book.title }}</a></div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 d-none d-lg-block d-xl-bloc d-sm-block">
                 {% for author in book.authors %}
                         {{ author }}
                 {% endfor %}
             </div>
-            <div class="col-3">{{ book.isbn }}</div>
-            <div class="col-1">{{ book.price }}</div>
-            <div class="col-1">Action</div>
+            <div class="col-3 d-none d-lg-block d-xl-block">{{ book.isbn }}</div>
+            <div class="col-1 d-none d-lg-block d-xl-block">{{ book.price }}</div>
+            <div class="col-1 d-none d-lg-block d-xl-block">Action</div>
         </div>
-            {##}
-            {##}
-                {#<th class="col-4">{{ book.title }}</th>#}
-                {#<th class="col-4">#}
-                    {#{% for author in book.authors %}#}
-                        {#{{ author }} ttetwet twe tw tw twwe tw tw twee tw wt wetwtwtwe twtw tewttw#}
-                    {#{% endfor %}#}
-                {#</th>#}
-                {#<th class="col-2">{{ book.isbn }}</th>#}
-                {#<th class="col-2">{{ book.price }}</th>#}
-                {#<th class="col-2"></th>#}
+            <hr class="col-xs-12">
+
         {% endfor %}
     </div>
 
+
+    <div class="container">
+        <div class="navigation pb-4">
+            {{ knp_pagination_render(books) }}
+        </div>
+    </div>
         {% endblock %}

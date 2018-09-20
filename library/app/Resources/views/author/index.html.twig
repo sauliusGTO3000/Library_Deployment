@@ -1,39 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Authors list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fullname</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container mr-auto">
+        <form>
+            <div class="row align-content-center">
+                <div class="col-12">
+                    <div class="col-12 px-2">
+                        <div class="input-group mb-3">
+                            <div class="col-xl-10 col-l-10 col-md-10 col-xs-10">
+                                <input type="text" name="q" class="form-control col-xs-12 col-md-12" placeholder="Search Authors...">
+                            </div>
+                            <button type="submit" class="btn btn-outline-secondary">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr class="col-xs-12">
+    </div>
+    <div class="container col-11">
+        <div class="row mb-2">
+            <div class="col-12"><b>Author</b></div>
+        </div>
         {% for author in authors %}
-            <tr>
-                <td><a href="{{ path('author_show', { 'id': author.id }) }}">{{ author.id }}</a></td>
-                <td>{{ author.fullName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('author_show', { 'id': author.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('author_edit', { 'id': author.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <div class="row">
+                <div class="col-12"><a href="{{ path('author_show', { 'id': author.id }) }}">{{ author.fullName }}</a></div>
+            </div>
+            <hr class="col-xs-12">
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('author_new') }}">Create a new author</a>
-        </li>
-    </ul>
+    </div>
+    <div class="container">
+        <div class="navigation pb-4">
+            {{ knp_pagination_render(authors) }}
+        </div>
+    </div>
 {% endblock %}

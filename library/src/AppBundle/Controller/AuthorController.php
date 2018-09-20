@@ -21,14 +21,36 @@ class AuthorController extends Controller
      * @Route("/", name="author_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $q = $request->query->get('q');
+
+        if ($q){
+
+                $authors = $em->getRepository('AppBundle:Author')->findByAuthorName($q);
+                $paginator = $this->get('knp_paginator');
+                $result = $paginator->paginate(
+                    $authors,
+                    $request->query->getInt('page',1),
+                    $request->query->getInt('limir',2)
+                );
+
+                return $this->render('author/index.html.twig', array(
+                    'authors' => $result,
+                ));
+
+            }
 
         $authors = $em->getRepository('AppBundle:Author')->findAll();
-
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $authors,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limir',2)
+        );
         return $this->render('author/index.html.twig', array(
-            'authors' => $authors,
+            'authors' => $result,
         ));
     }
 

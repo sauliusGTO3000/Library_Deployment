@@ -43,3 +43,38 @@ body{
 .btn.btn-outline-secondary:hover{
   background-color: #1fb372!important;
 }
+
+.page-item.active{
+  background-color: #1fb372!important;
+}
+
+
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color:    #1fb372!important;
+  border-color:         #1fb372!important;
+  color:               #000000;
+  cursor:pointer;
+  z-index:2;
+}
+
+
+.page-item{
+  .page-link {
+    color: #1fb372!important;
+  }
+}
+
+.page-item.disabled{
+  .page-link{
+    color: rgb(174,174,174)!important;
+  }
+}
+
+.page-item.active{
+  .page-link{
+    color: white!important;
+  }
+}
+
+
