@@ -2,7 +2,7 @@
 Simple Symfony based Library
 
 
-A simple web page for image uploading. Project is temporarily deployed on https://www.sauliusgto3000.lt until 9/19/2018
+roject is temporarily deployed on https://www.sauliusgto3000.lt
 
 ***Project was created using:***
   - Symfony 3.4.15 without Flex
