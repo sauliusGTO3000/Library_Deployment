@@ -27,6 +27,9 @@
                 <div class="row justify-content-md-center">
                     <a href="#" class="forgot-password">forgot password</a>
                 </div>
+                <div class="row justify-content-center">
+                    <a href="{{ path('fos_user_registration_register') }}" class="forgot-password">register</a>
+                </div>
                 <div class="row justify-content-md-center">
                     <input type="submit"  class="btn btn-success  col-10 mt-2"  name="_submit" value="{{ 'security.login.submit'|trans }}" style="background-color: rgb(31,179,114)"/>
                 </div>
@@ -38,7 +41,7 @@
 <div class="d-xl-none d-lg-none  d-lg-none d-md-none d-md-block d-sm-block justify-content-md-center" id="login-screen-landscape" style="background-color: rgb(250,250,250)">
     <div class="container col-10 login-box" style="background-color: rgb(250,250,250)">
         <div class="row justify-content-center mb-1">
-            <img src="{{ asset('build/styleelements/logo.png') }}">
+            <img src="{{ asset('styleelements/logo.png') }}">
         </div>
         <hr class="col-xs-12">
         <div class="row justify-content-center mb-4">
@@ -57,6 +60,9 @@
                 </div>
                 <div class="row justify-content-center">
                     <a href="#" class="forgot-password">forgot password</a>
+                </div>
+                <div class="row justify-content-center">
+                    <a href="{{ path('fos_user_registration_register') }}" class="forgot-password">register</a>
                 </div>
                 <div class="row row justify-content-center">
                     <input type="submit"  class="btn btn-success  col-10 mt-2"  name="_submit" value="{{ 'security.login.submit'|trans }}" style="background-color: rgb(31,179,114)"/>
