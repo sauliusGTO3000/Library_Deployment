@@ -64,7 +64,7 @@ class BookController extends Controller
         $result = $paginator->paginate(
             $books,
             $request->query->getInt('page',1),
-            $request->query->getInt('limir',2)
+            $request->query->getInt('limit',25)
         );
 
         return $this->render('book/index.html.twig', array(
