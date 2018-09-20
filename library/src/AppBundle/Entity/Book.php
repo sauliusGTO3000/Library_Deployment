@@ -51,8 +51,7 @@ class Book
 
     /**
      * @var \stdClass
-     *
-     *
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumn(name="categoryName", referencedColumnName="id")
      */

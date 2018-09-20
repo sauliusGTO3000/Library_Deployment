@@ -126,7 +126,7 @@ class AuthorController extends Controller
     /**
      * Deletes a author entity.
      *
-     * @Route("/{id}", name="author_delete")
+     * @Route("/{id}/delete", name="author_delete")
      * @Method("DELETE")
      * @Security("has_role('ROLE_USER')")
      */
@@ -144,12 +144,10 @@ class AuthorController extends Controller
         return $this->redirectToRoute('author_index');
     }
 
+
     /**
-     * Creates a form to delete a author entity.
-     *
-     * @param Author $author The author entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     * @param Author $author
+     * @return \Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(Author $author)
     {

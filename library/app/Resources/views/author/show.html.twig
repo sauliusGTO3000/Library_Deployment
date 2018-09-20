@@ -1,32 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Author</h1>
+    <div class="container mr-auto col-11">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="display-4">{{ author.fullName }}</div>
+            </div>
+        </div>
+        <hr class="col-xs-12">
+            {% if  is_granted("ROLE_USER")%}
+                <div><a href="{{ path('author_edit',{'id':author.id}) }}" class="btn btn-success mb-2">Edit</a></div>
+                <div><a href="{{ path('author_index') }}" class="btn btn-light mb-2">Back to list</a></div>
+                <hr class="col-xs-12">
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger mb-2">
+                {{ form_end(delete_form) }}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ author.id }}</td>
-            </tr>
-            <tr>
-                <th>Fullname</th>
-                <td>{{ author.fullName }}</td>
-            </tr>
-        </tbody>
-    </table>
+            {% endif %}
 
-    <ul>
-        <li>
-            <a href="{{ path('author_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('author_edit', { 'id': author.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
 {% endblock %}
+
+
+               {#<h1>Author</h1>#}
+
+        {#<table>#}
+            {#<tbody>#}
+                {#<tr>#}
+                    {#<th>Id</th>#}
+                    {#<td>{{ author.id }}</td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<th>Fullname</th>#}
+                    {#<td>{{ author.fullName }}</td>#}
+                {#</tr>#}
+            {#</tbody>#}
+        {#</table>#}
+
+        {#<ul>#}
+            {#<li>#}
+                {#<a href="{{ path('author_index') }}">Back to the list</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#<a href="{{ path('author_edit', { 'id': author.id }) }}">Edit</a>#}
+            {#</li>#}
+            {#<li>#}
+                {#{{ form_start(delete_form) }}#}
+                    {#<input type="submit" value="Delete">#}
+                {#{{ form_end(delete_form) }}#}
+            {#</li>#}
+        {#</ul>#}
