@@ -30,15 +30,25 @@ A simple web page for image uploading. Project is temporarily deployed on https:
       ```
         when asked for additional details, proceed with following:
             - Database_host(127.0.0.1) press enter
+            
             - Database_posrt press enter
+            
             - Database_name(symphony): library
+            
             - Database_user: root
+            
             - Database_password: root
+            
             - Mailer_transport(smtp): presss enter
+            
             - Mailer_host(127.0.0.1): presss enter
+            
             - Mailer_user(null): foo@bar.com
+            
             - Mailer_password: presss enter
+            
             - Secret: presss enter
+            
 
       ```
       php bin/console doctrine:database:create
