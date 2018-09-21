@@ -43,7 +43,7 @@ class Book
     private $isbn;
 
     /**
-     * @ORM\Column(type="decimal", precision=100, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2)
      * @Assert\NotBlank()
      */
     private $price;
