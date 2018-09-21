@@ -22,9 +22,7 @@ class BookType extends AbstractType
         $builder
             ->add('title')
             ->add('isbn')
-            ->add('price',MoneyType::class, array(
-                'divisor' => 100,
-            ))
+            ->add('price',MoneyType::class)
             ->add('category')
             ->add('authors', EntityType::class, array(
                 'class' => \AppBundle\Entity\Author::class,
